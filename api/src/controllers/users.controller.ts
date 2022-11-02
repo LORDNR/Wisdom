@@ -73,7 +73,7 @@ const deleteUser = async (req: Request, res: Response) => {
       try {
         await prisma.wisdom.deleteMany({
           where: {
-            username: user.id,
+            username: user.username,
           },
         });
         await prisma.user.delete({

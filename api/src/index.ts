@@ -18,6 +18,6 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api", routes);
 
-app.listen(config.environments.port, () => {
-  console.log(`Server is running http://localhost:${config.environments.port}`);
+app.listen(config.environments.PORT, () => {
+  console.log(`Server is running http://localhost:${config.environments.PORT}`);
 });

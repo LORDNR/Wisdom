@@ -57,12 +57,36 @@ export default function Settings() {
 
     // console.log(res);
   };
+  console.log(user.id);
+
+  const handleDeleteUser = async (e) => {
+    try {
+      const userId = user.id;
+      console.log("test");
+      const res = await axios.delete(
+        `http://localhost:3000/api/user/delete/${user.id}`,
+        {
+          userId,
+        }
+      );
+      res.data && alert("Delete Account Success");
+      window.location.replace("/");
+    } catch (err) {
+      alert("Delete Failed");
+      console.log(err);
+    }
+  };
   return (
     <div className="settings">
       <div className="settingsWrapper">
         <div className="settingsTitle">
           <span className="settingsTitleUpdate">Update Your Account</span>
-          <span className="settingsTitleDelete">Delete Account</span>
+          <a
+            style={{ textDecoration: "none", color: "red" }}
+            onClick={handleDeleteUser}
+          >
+            <span className="settingsTitleDelete">Delete Account</span>
+          </a>
         </div>
         <form className="settingsForm" onSubmit={handleSubmit}>
           <label>Profile Picture</label>
@@ -101,8 +125,9 @@ export default function Settings() {
           <input
             type="password"
             // placeholder={user.password}
-            value={password}
+            placeholder={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <label>Firstname</label>
           <input
