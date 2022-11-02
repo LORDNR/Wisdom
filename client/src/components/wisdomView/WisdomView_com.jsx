@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Context } from "../context/Context";
 import { Link, useLocation } from "react-router-dom";
+import { Form } from "semantic-ui-react";
 import axios from "axios";
 import "./wisdomView_com.css";
 
@@ -11,6 +12,7 @@ export default function WisdomView_com() {
   const [wisdoms, setWisdom] = useState([]);
   const [names, setName] = useState("");
   const [details, setDetail] = useState("");
+  const [category, setCategory] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
 
   useEffect(() => {
@@ -19,6 +21,7 @@ export default function WisdomView_com() {
       setWisdom(res.data);
       setName(res.data.name);
       setDetail(res.data.detail);
+      setCategory(res.data.category);
     };
     getWisdom();
   }, [path]);
@@ -40,6 +43,7 @@ export default function WisdomView_com() {
         username: user.username,
         name: names,
         detail: details,
+        category: category,
       });
       setUpdateMode(false);
     } catch (err) {
@@ -54,12 +58,55 @@ export default function WisdomView_com() {
           <img src={wisdoms.image} alt="" className="wisdomViewComImg" />
         )}{" "}
         {updateMode ? (
-          <input
-            className="wisdomViewComTitleInput"
-            type="text"
-            value={names}
-            onChange={(e) => setName(e.target.value)}
-          />
+          <div>
+            <input
+              className="wisdomViewComTitleInput"
+              type="text"
+              value={names}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <Form.Group inline className="formGroup">
+              <Form.Radio
+                className="formRadio"
+                label="Food"
+                checked={category == "Food"}
+                value={category}
+                onClick={() => setCategory("Food")}
+              />
+              <Form.Radio
+                className="formRadio"
+                label="Dessert"
+                checked={category == "Dessert"}
+                // value="Dessert"
+                value={category}
+                onClick={() => setCategory("Dessert")}
+              />
+              <Form.Radio
+                className="formRadio"
+                label="Culture"
+                checked={category == "Culture"}
+                // value="Culture"
+                value={category}
+                onClick={() => setCategory("Culture")}
+              />
+              <Form.Radio
+                className="formRadio"
+                label="Herb"
+                checked={category == "Herb"}
+                // value="Herb"
+                value={category}
+                onClick={() => setCategory("Herb")}
+              />
+              <Form.Radio
+                className="formRadio"
+                label="Other"
+                checked={category == "Other"}
+                // value="Other"
+                value={category}
+                onClick={() => setCategory("Other")}
+              />
+            </Form.Group>
+          </div>
         ) : (
           <h1 className="wisdomViewComTitle">
             {names}
