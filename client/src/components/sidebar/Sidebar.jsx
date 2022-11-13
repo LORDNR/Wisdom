@@ -18,7 +18,7 @@ export default function Sidebar() {
     <>
       <div className="sidebar">
         <div className="sidebarItem">
-          <span className="sidebarTitle">ABOUT ME</span>
+          <span className="sidebarTitle">เทศบาลนครตรัง</span>
           <img
             src="https://www.trangcity.go.th/trangcity/images/logo_-_Copy.png"
             alt=""

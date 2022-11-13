@@ -1,5 +1,5 @@
 .header {
-    margin-top: 60px;
+    height: 650px;
 }
 
 .headerTitles {
@@ -8,24 +8,19 @@
     align-items: center;
     font-family: 'Lora', serif;
     color: #444;
-}
-
-.headerTitleSm {
-    position: absolute;
-    top: 18%;
-    font-style: 20px;
+    margin-top: 90px;
 }
 
 .headerTitleLg {
     position: absolute;
-    top: 20%;
+    top: 75%;
     font-size: 100px;
+    font-family: "Varela Round", Arial, Helvetica, sans-serif;
 }
 
 .headerImg {
     width: 100%;
     height: 450px;
-    margin-top: 80px;
+    margin-top: 0px;
     object-fit: cover;
 }
-
